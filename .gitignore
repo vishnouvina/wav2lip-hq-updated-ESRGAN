@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+checkpoints/
+weights/
+results/
+temp/
+videos/
