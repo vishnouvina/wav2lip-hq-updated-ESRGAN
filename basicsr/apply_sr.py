@@ -9,7 +9,8 @@ def init_sr_model(model_path):
     model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32)
     model.load_state_dict(torch.load(model_path)['params'], strict=True)
     model.eval()
-    model = model.cuda()
+    device = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
+    model = model.to(device)
     return model
 
 
